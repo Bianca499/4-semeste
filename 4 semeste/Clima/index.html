@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clima Agora</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fe4ff5, #003cffc4);
+            color: #17233c;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 45px 20px 35px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 18px;
+        }
+
+        /* PESQUISA */
+
+        .pesquisa {
+            background: white;
+            padding: 28px;
+            border-radius: 22px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .pesquisa h2 {
+            margin-bottom: 18px;
+            font-size: 24px;
+        }
+
+        .campo-pesquisa {
+            display: flex;
+            gap: 10px;
+        }
+
+        .campo-pesquisa input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .campo-pesquisa input:focus {
+            border-color: #3395e8;
+        }
+
+        .campo-pesquisa button {
+            border: none;
+            background: #348fe6;
+            color: white;
+            padding: 0 25px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .campo-pesquisa button:hover {
+            background: #2176c7;
+            transform: translateY(-2px);
+        }
+
+        .campo-pesquisa button:disabled {
+            opacity: 0.7;
+            cursor: wait;
+        }
+
+        /* CLIMA ATUAL */
+
+        .clima {
+            background: white;
+            border-radius: 22px;
+            padding: 35px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .topo-clima {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .cidade-info h2 {
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .cidade-info p {
+            color: #667085;
+            font-size: 16px;
+            text-transform: capitalize;
+        }
+
+        .temperatura-principal {
+            text-align: center;
+        }
+
+        .icone {
+            font-size: 55px;
+            display: block;
+        }
+
+        .temperatura {
+            font-size: 42px;
+            font-weight: bold;
+        }
+
+        /* CARDS */
+
+        .informacoes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .info {
+            background: #f3f7fb;
+            border-radius: 16px;
+            padding: 22px;
+            text-align: center;
+        }
+
+        .info .emoji {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .info strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 7px;
+        }
+
+        .info span {
+            color: #667085;
+            font-size: 14px;
+        }
+
+        /* PREVISÃO */
+
+        .previsao {
+            background: white;
+            border-radius: 22px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .previsao h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .dias {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .dia {
+            background: #f3f7fb;
+            border-radius: 15px;
+            padding: 18px 10px;
+            text-align: center;
+        }
+
+        .dia h3 {
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .dia .icone-dia {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .dia .temperatura-dia {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .dia p {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 6px;
+            text-transform: capitalize;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            .campo-pesquisa {
+                flex-direction: column;
+            }
+
+            .campo-pesquisa button {
+                padding: 14px;
+            }
+
+            .topo-clima {
+                flex-direction: column;
+                text-align: center;
+                gap: 25px;
+            }
+
+            .informacoes {
+                grid-template-columns: 1fr;
+            }
+
+            .dias {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .container {
+                width: 94%;
+            }
+
+            .dias {
+                grid-template-columns: 1fr;
+            }
+
+            .clima {
+                padding: 25px 18px;
+            }
+
+            .pesquisa {
+                padding: 22px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>🌤️ Clima Agora</h1>
+            <p>Consulte a previsão do tempo da sua cidade</p>
+        </header>
+
+
+        <!-- PESQUISA -->
+
+        <section class="pesquisa">
+
+            <h2>🔎 Pesquisar cidade</h2>
+
+            <div class="campo-pesquisa">
+
+                <input
+                    type="text"
+                    id="cidadeInput"
+                    placeholder="Digite o nome da cidade"
+                    value="Suzano"
+                >
+
+                <button id="buscar">
+                    Buscar
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLIMA ATUAL -->
+
+        <section class="clima">
+
+            <div class="topo-clima">
+
+                <div class="cidade-info">
+
+                    <h2 id="cidade">
+                        São Paulo
+                    </h2>
+
+                    <p id="descricao">
+                        Consulte uma cidade
+                    </p>
+
+                </div>
+
+
+                <div class="temperatura-principal">
+
+                    <span
+                        class="icone"
+                        id="icone"
+                    >
+                        🌤️
+                    </span>
+
+                    <span
+                        class="temperatura"
+                        id="temperatura"
+                    >
+                        --°C
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- INFORMAÇÕES -->
+
+            <div class="informacoes">
+
+                <div class="info">
+
+                    <div class="emoji">
+                        💧
+                    </div>
+
+                    <strong id="umidade">
+                        --%
+                    </strong>
+
+                    <span>
+                        Umidade
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    <div class="emoji">
+                        💨
+                    </div>
+
+                    <strong id="vento">
+                        -- km/h
+                    </strong>
+
+                    <span>
+                        Vento
+                    </span>
+
+                </div>
+
+
+                <div class="info">
+
+                    <div class="emoji">
+                        🌡️
+                    </div>
+
+                    <strong id="sensacao">
+                        --°C
+                    </strong>
+
+                    <span>
+                        Sensação térmica
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PREVISÃO DA SEMANA -->
+
+        <section class="previsao">
+
+            <h2>
+                🗓️ Previsão da semana
+            </h2>
+
+            <div class="dias">
+
+                <div class="dia">
+
+                    <h3>Hoje</h3>
+
+                    <div class="icone-dia">
+                        ☀️
+                    </div>
+
+                    <div class="temperatura-dia">
+                        28°C
+                    </div>
+
+                    <p>
+                        Ensolarado
+                    </p>
+
+                </div>
+
+
+                <div class="dia">
+
+                    <h3>Amanhã</h3>
+
+                    <div class="icone-dia">
+                        🌤️
+                    </div>
+
+                    <div class="temperatura-dia">
+                        27°C
+                    </div>
+
+                    <p>
+                        Parcialmente nublado
+                    </p>
+
+                </div>
+
+
+                <div class="dia">
+
+                    <h3>Quarta</h3>
+
+                    <div class="icone-dia">
+                        🌧️
+                    </div>
+
+                    <div class="temperatura-dia">
+                        24°C
+                    </div>
+
+                    <p>
+                        Chuva
+                    </p>
+
+                </div>
+
+
+                <div class="dia">
+
+                    <h3>Quinta</h3>
+
+                    <div class="icone-dia">
+                        🌦️
+                    </div>
+
+                    <div class="temperatura-dia">
+                        25°C
+                    </div>
+
+                    <p>
+                        Pancadas de chuva
+                    </p>
+
+                </div>
+
+
+                <div class="dia">
+
+                    <h3>Sexta</h3>
+
+                    <div class="icone-dia">
+                        ☀️
+                    </div>
+
+                    <div class="temperatura-dia">
+                        29°C
+                    </div>
+
+                    <p>
+                        Ensolarado
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dia dos Professores</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        /* FUNDO */
+        .pagina {
+            min-height: 100vh;
+            padding: 50px 20px;
+
+            display: flex;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    #c084fc,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    #e879f9,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #c9a0ef,
+                    #fcecff,
+                    #ddb8f5
+                );
+        }
+
+        /* CONTEÚDO */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        /* ÍCONE */
+        .professor {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+
+            border-radius: 50%;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #ec4899
+            );
+
+            box-shadow:
+                0 10px 35px rgba(92, 33, 182, 0.4);
+        }
+
+        /* TEXTO */
+        .especial {
+            color: #5b21b6;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
+        }
+
+        /* TÍTULO */
+        h1 {
+            font-family: Georgia, serif;
+
+            font-size: 68px;
+
+            color: #180b35;
+
+            margin-bottom: 25px;
+        }
+
+        h1 span {
+            display: block;
+
+            color: #a832c7;
+
+            font-style: italic;
+        }
+
+        /* LINHA AMARELA */
+        h1 span::after {
+            content: "";
+
+            display: block;
+
+            width: 280px;
+            height: 6px;
+
+            margin: 12px auto;
+
+            border-radius: 50%;
+
+            background: #f5b82e;
+
+            transform: rotate(-2deg);
+        }
+
+        /* DESCRIÇÃO */
+        .descricao {
+            font-family: Georgia, serif;
+
+            font-size: 20px;
+
+            line-height: 1.5;
+
+            color: #32134e;
+
+            margin-bottom: 40px;
+        }
+
+        /* CONTADOR */
+        .contador {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            padding: 30px;
+
+            border-radius: 30px;
+
+            background: rgba(255, 255, 255, 0.35);
+
+            border: 1px solid rgba(255, 255, 255, 0.8);
+
+            box-shadow:
+                0 25px 60px rgba(82, 36, 120, 0.25);
+
+            backdrop-filter: blur(15px);
+        }
+
+        /* CARDS */
+        .card {
+            min-height: 210px;
+
+            padding: 25px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #632c80,
+                    #24103f
+                );
+
+            box-shadow:
+                0 15px 35px rgba(44, 13, 70, 0.4);
+
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* ÍCONE */
+        .icone {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        /* NÚMERO */
+        .numero {
+            font-size: 65px;
+
+            font-weight: 900;
+
+            color: white;
+
+            line-height: 1;
+        }
+
+        /* NOME */
+        .nome {
+            margin-top: 15px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+        }
+
+        /* CORES */
+        .dias .icone,
+        .dias .nome {
+            color: #ff5ca8;
+        }
+
+        .horas .icone,
+        .horas .nome {
+            color: #a970ff;
+        }
+
+        .minutos .icone,
+        .minutos .nome {
+            color: #ffc62e;
+        }
+
+        .segundos .icone,
+        .segundos .nome {
+            color: #6ee56a;
+        }
+
+        /* DATA */
+        .data {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-top: 30px;
+
+            padding: 16px 30px;
+
+            border-radius: 25px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7027c9,
+                    #c72ca8
+                );
+
+            box-shadow:
+                0 10px 30px rgba(112, 39, 201, 0.35);
+        }
+
+        .data .calendario {
+            font-size: 30px;
+        }
+
+        .data-texto {
+            display: flex;
+
+            flex-direction: column;
+
+            text-align: left;
+        }
+
+        .data-texto small {
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+        .data-texto strong {
+            font-size: 20px;
+        }
+
+        /* MENSAGEM */
+        .mensagem {
+            max-width: 750px;
+
+            margin: 40px auto 0;
+
+            padding: 30px;
+
+            text-align: left;
+
+            border-left: 5px solid #7c3aed;
+
+            border-radius: 0 20px 20px 0;
+
+            background: rgba(255, 255, 255, 0.35);
+
+            box-shadow:
+                0 10px 30px rgba(70, 20, 100, 0.12);
+        }
+
+        .aspas {
+            font-family: Georgia, serif;
+
+            font-size: 60px;
+
+            color: #a66ce2;
+
+            line-height: 25px;
+        }
+
+        .mensagem p {
+            font-family: Georgia, serif;
+
+            font-size: 21px;
+
+            line-height: 1.5;
+
+            font-style: italic;
+
+            color: #26113f;
+        }
+
+        .linha {
+            width: 100px;
+
+            height: 3px;
+
+            margin: 18px 0;
+
+            background: #e14aab;
+        }
+
+        .mensagem h2 {
+            font-family: Georgia, serif;
+
+            font-size: 25px;
+
+            margin-bottom: 10px;
+        }
+
+        .mensagem span {
+            font-size: 16px;
+
+            color: #44205e;
+        }
+
+        .livro {
+            margin-top: 25px;
+
+            font-size: 42px;
+        }
+
+        /* CELULAR */
+        @media (max-width: 800px) {
+
+            h1 {
+                font-size: 50px;
+            }
+
+            .contador {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            h1 {
+                font-size: 40px;
+            }
+
+            .contador {
+                grid-template-columns: 1fr;
+            }
+
+            .descricao br {
+                display: none;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="pagina">
+
+        <div class="container">
+
+            <div class="professor">
+                🎓
+            </div>
+
+            <p class="especial">
+                ✨ UMA DATA ESPECIAL ✨
+            </p>
+
+            <h1>
+                Dia dos
+                <span>Professores</span>
+            </h1>
+
+            <p class="descricao">
+                Contando os dias para homenagear aqueles que
+                <br>
+                ensinam, inspiram e transformam vidas. 📚 ✨
+            </p>
+
+
+            <!-- CONTADOR -->
+
+            <div class="contador">
+
+                <div class="card dias">
+
+                    <div class="icone">📅</div>
+
+                    <div class="numero" id="dias">
+                        00
+                    </div>
+
+                    <div class="nome">
+                        DIAS
+                    </div>
+
+                </div>
+
+
+                <div class="card horas">
+
+                    <div class="icone">🕐</div>
+
+                    <div class="numero" id="horas">
+                        00
+                    </div>
+
+                    <div class="nome">
+                        HORAS
+                    </div>
+
+                </div>
+
+
+                <div class="card minutos">
+
+                    <div class="icone">⏱️</div>
+
+                    <div class="numero" id="minutos">
+                        00
+                    </div>
+
+                    <div class="nome">
+                        MINUTOS
+                    </div>
+
+                </div>
+
+
+                <div class="card segundos">
+
+                    <div class="icone">⏰</div>
+
+                    <div class="numero" id="segundos">
+                        00
+                    </div>
+
+                    <div class="nome">
+                        SEGUNDOS
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DATA -->
+
+            <div class="data">
+
+                <div class="calendario">
+                    📅
+                </div>
+
+                <div class="data-texto">
+
+                    <small>
+                        O GRANDE DIA SERÁ
+                    </small>
+
+                    <strong>
+                        15 de Outubro de 2026
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MENSAGEM -->
+
+            <div class="mensagem">
+
+                <div class="aspas">
+                    “
+                </div>
+
+                <p>
+                    Ensinar é deixar uma marca no coração
+                    <br>
+                    e na vida de cada aluno.
+                </p>
+
+                <div class="linha"></div>
+
+                <h2>
+                    💜 Obrigado, professores!
+                </h2>
+
+                <span>
+                    Feito com 💜 para celebrar quem ensina e inspira.
+                </span>
+
+            </div>
+
+            <div class="livro">
+                📖
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        const dataFinal = new Date(
+            2026,
+            9,
+            15,
+            0,
+            0,
+            0
+        );
+
+        function atualizarContador() {
+
+            const agora = new Date();
+
+            const diferenca =
+                dataFinal - agora;
+
+            if (diferenca <= 0) {
+
+                document.getElementById("dias").textContent = "00";
+                document.getElementById("horas").textContent = "00";
+                document.getElementById("minutos").textContent = "00";
+                document.getElementById("segundos").textContent = "00";
+
+                return;
+            }
+
+            const dias = Math.floor(
+                diferenca /
+                (1000 * 60 * 60 * 24)
+            );
+
+            const horas = Math.floor(
+                (diferenca /
+                (1000 * 60 * 60)) % 24
+            );
+
+            const minutos = Math.floor(
+                (diferenca /
+                (1000 * 60)) % 60
+            );
+
+            const segundos = Math.floor(
+                (diferenca / 1000) % 60
+            );
+
+
+            document.getElementById("dias").textContent =
+                String(dias).padStart(2, "0");
+
+            document.getElementById("horas").textContent =
+                String(horas).padStart(2, "0");
+
+            document.getElementById("minutos").textContent =
+                String(minutos).padStart(2, "0");
+
+            document.getElementById("segundos").textContent =
+                String(segundos).padStart(2, "0");
+        }
+
+
+        atualizarContador();
+
+        setInterval(atualizarContador, 1000);
+
+    </script>
+
+</body>
+</html>

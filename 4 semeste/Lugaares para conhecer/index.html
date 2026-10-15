@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h1>Lugares para Conhecer</h1>
+
+     <link rel="stylesheet" href="style.css">
+      </head>
+
+<body>
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ==============================
+         CABEÇALHO
+    =============================== -->
+
+    <header class="cabecalho">
+
+        <div class="logo">
+            <span class="logo-simbolo">✦</span>
+
+            <div>
+                <strong>LUGARES</strong>
+                <small>PARA CONHECER</small>
+            </div>
+        </div>
+
+
+        <nav class="menu">
+
+            <a href="#inicio" class="ativo">
+                Início
+            </a>
+
+            <a href="#destinos">
+                Destinos
+            </a>
+
+            <a href="#sobre">
+                Sobre
+            </a>
+
+        </nav>
+
+
+        <div class="icones">
+
+            <button title="Favoritos">
+                ♡
+            </button>
+
+            <button title="Perfil">
+                ♙
+            </button>
+
+            <button title="Menu">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==============================
+         BANNER PRINCIPAL
+    =============================== -->
+
+    <section class="banner" id="inicio">
+
+        <div class="banner-conteudo">
+
+            <span class="banner-subtitulo">
+                EXPLORE • DESCUBRA • VIAJE
+            </span>
+
+            <h1>
+                DESCUBRA
+                <br>
+                NOVOS DESTINOS
+            </h1>
+
+            <p>
+                Encontre lugares incríveis para conhecer
+                e organize seus próximos destinos.
+            </p>
+
+            <a href="#destinos" class="botao-banner">
+                EXPLORAR DESTINOS
+                <span>→</span>
+            </a>
+
+        </div>
+
+
+        <div class="seta-esquerda">
+            ‹
+        </div>
+
+        <div class="seta-direita">
+            ›
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         INFORMAÇÕES
+    =============================== -->
+
+    <section class="informacoes">
+
+        <div class="informacao">
+
+            <div class="informacao-icone">
+                ◎
+            </div>
+
+            <div>
+                <strong>
+                    Lugares incríveis
+                </strong>
+
+                <p>
+                    Descubra novos destinos
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="informacao">
+
+            <div class="informacao-icone">
+                ⌖
+            </div>
+
+            <div>
+                <strong>
+                    Explore destinos
+                </strong>
+
+                <p>
+                    Escolha onde conhecer
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="informacao">
+
+            <div class="informacao-icone">
+                ✈
+            </div>
+
+            <div>
+                <strong>
+                    Planeje sua viagem
+                </strong>
+
+                <p>
+                    Organize seus destinos
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="informacao">
+
+            <div class="informacao-icone">
+                ★
+            </div>
+
+            <div>
+                <strong>
+                    Sua lista
+                </strong>
+
+                <p>
+                    Salve seus lugares
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         ÁREA DE CADASTRO
+    =============================== -->
+
+    <section class="cadastro">
+
+        <div class="cadastro-titulo">
+
+            <span>
+                NOVO DESTINO
+            </span>
+
+            <h2>
+                Adicione um lugar
+            </h2>
+
+            <p>
+                Informe o destino que você deseja conhecer.
+            </p>
+
+        </div>
+
+
+        <div class="cadastro-form">
+
+            <div class="campo">
+
+                <span>
+                    ⌖
+                </span>
+
+                <input
+                    type="text"
+                    id="campoDestino"
+                    placeholder="Informe um destino..."
+                >
+
+            </div>
+
+
+            <button
+                id="btnAdicionar"
+                class="botao-adicionar"
+            >
+                + ADICIONAR NOVO DESTINO
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         BANNER SECUNDÁRIO
+    =============================== -->
+
+    <section class="banner-secundario">
+
+        <div>
+
+            <span>
+                VIAJE MAIS • CONHEÇA MAIS
+            </span>
+
+            <h2>
+                SEU PRÓXIMO
+                <br>
+                DESTINO COMEÇA AQUI
+            </h2>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         DESTINOS
+    =============================== -->
+
+    <main class="destinos" id="destinos">
+
+        <div class="destinos-topo">
+
+            <div>
+
+                <span class="titulo-pequeno">
+                    MINHA LISTA DE DESTINOS
+                </span>
+
+                <h2>
+                    Lugares para conhecer
+                </h2>
+
+                <p>
+                    Veja os destinos cadastrados na sua lista.
+                </p>
+
+            </div>
+
+
+            <div class="contador">
+
+                <strong id="contador">
+                    0
+                </strong>
+
+                <div>
+                    <span>DESTINOS</span>
+                    <small>CADASTRADOS</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CARDS CRIADOS PELO JAVASCRIPT -->
+
+        <div
+            class="lista-destinos"
+            id="listaDestinos"
+        >
+        </div>
+
+    </main>
+
+
+    <!-- ==============================
+         SOBRE
+    =============================== -->
+
+    <section class="sobre" id="sobre">
+
+        <div class="sobre-imagem">
+
+            <span>
+                ✦
+            </span>
+
+        </div>
+
+
+        <div class="sobre-texto">
+
+            <small>
+                SOBRE O PROJETO
+            </small>
+
+            <h2>
+                Explore.
+                <br>
+                Descubra.
+                <br>
+                <em>Conheça.</em>
+            </h2>
+
+            <p>
+                O aplicativo Lugares para Conhecer foi desenvolvido
+                para ajudar o usuário a organizar destinos que
+                deseja visitar.
+            </p>
+
+            <p>
+                Cadastre um destino, visualize sua lista e remova
+                os lugares quando quiser.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==============================
+         RODAPÉ
+    =============================== -->
+
+    <footer>
+
+        <div class="rodape-topo">
+
+            <div class="logo rodape-logo">
+
+                <span class="logo-simbolo">
+                    ✦
+                </span>
+
+                <div>
+                    <strong>LUGARES</strong>
+                    <small>PARA CONHECER</small>
+                </div>
+
+            </div>
+
+
+            <div class="rodape-menu">
+
+                <a href="#inicio">
+                    Início
+                </a>
+
+                <a href="#destinos">
+                    Destinos
+                </a>
+
+                <a href="#sobre">
+                    Sobre
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="rodape-final">
+
+            <span>
+                © 2026 Lugares para Conhecer
+            </span>
+
+            <span>
+                Explore o mundo e viva novas experiências.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
