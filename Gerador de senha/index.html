@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Senhas</title>
+    <link rel="stylesheet" href="script.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <main class="container">
+        <header class="cabecalho">
+            <div class="logo">🔐</div>
+            <h1>Gerador de <span>Senhas</span></h1>
+            <p>Crie senhas fortes e proteja suas informações.</p>
+        </header>
+
+        <section class="cartao">
+            <label class="titulo-campo" for="senha">Sua nova senha</label>
+
+            <div class="campo-senha">
+                <input type="text" id="senha"
+                    placeholder="Clique em gerar senha"
+                    readonly aria-label="Senha gerada">
+
+                <button type="button" id="copiar"
+                    class="botao-copiar" title="Copiar senha"
+                    aria-label="Copiar senha">📋</button>
+            </div>
+
+            <div class="forca">
+                <div class="forca-info">
+                    <span>Força da senha</span>
+                    <span id="textoForca">Nenhuma</span>
+                </div>
+                <div class="barra">
+                    <div id="barraForca"></div>
+                </div>
+            </div>
+
+            <div class="configuracoes">
+                <div class="linha-tamanho">
+                    <label for="tamanho">Tamanho da senha</label>
+                    <span id="valorTamanho">16</span>
+                </div>
+
+                <input type="range" id="tamanho"
+                    min="4" max="40" value="16">
+
+                <div class="limites">
+                    <span>4 caracteres</span>
+                    <span>40 caracteres</span>
+                </div>
+
+                <h3>Personalize sua senha</h3>
+
+                <label class="opcao">
+                    <span><span class="icone">Aa</span> Letras maiúsculas</span>
+                    <input type="checkbox" id="maiusculas" checked>
+                </label>
+
+                <label class="opcao">
+                    <span><span class="icone">ab</span> Letras minúsculas</span>
+                    <input type="checkbox" id="minusculas" checked>
+                </label>
+
+                <label class="opcao">
+                    <span><span class="icone">123</span> Números</span>
+                    <input type="checkbox" id="numeros" checked>
+                </label>
+
+                <label class="opcao">
+                    <span><span class="icone">!@#</span> Símbolos especiais</span>
+                    <input type="checkbox" id="simbolos" checked>
+                </label>
+            </div>
+
+            <button type="button" id="gerar" class="botao-gerar">
+                ✨ Gerar nova senha
+            </button>
+
+            <p id="mensagem" class="mensagem" aria-live="polite">
+                Sua segurança começa com uma boa senha!
+            </p>
+        </section>
+
+        <footer>
+            <span>🛡️</span> Mais segurança para sua vida digital.
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="script.css"></script>
+</body>
+</html>
